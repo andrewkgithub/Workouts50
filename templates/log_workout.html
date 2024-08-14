@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Log Workout{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h2>Log Workout</h2>
+    <p></p>
+    <form action="/log_workout" method="post">
+        <div class="mb-3">
+            <label for="date">Date:</label>
+            <input class="form-control mx-auto w-auto" type="date" id="date" name="date" required>
+        </div>
+        <div class="mb-3">
+            <label for="type">Workout Type:</label>
+            <input autocomplete="off" class="form-control mx-auto w-auto" type="text" id="type" name="type" required>
+        </div>
+        <div class="mb-3">
+            <label for="duration">Duration (in minutes):</label>
+            <input class="form-control mx-auto w-auto" type="number" id="duration" name="duration" required>
+        </div>
+        <button class="btn btn-primary"type="submit">Log Workout</button>
+    </form>
+</div>
+{% endblock %}

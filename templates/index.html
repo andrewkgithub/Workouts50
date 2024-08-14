@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h3>Recent Workouts</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Exercise</th>
+                <th scope="col">Duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for workout in workouts %}
+            <tr>
+                <td>{{ workout.date }}</td>
+                <td>{{ workout.type }}</td>
+                <td>{{ workout.duration }} minutes</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/log_workout">Log a Workout</a>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Workout History
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h3>Workout History</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Workout Type</th>
+                <th scope="col">Duration</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for workout in workouts %}
+            <tr>
+                <td>{{ workout.date }}</td>
+                <td>{{ workout.type }}</td>
+                <td>{{ workout.duration }}</td>
+                <td>
+                    <form action="/delete_workout/{{ workout.id }}" method="post">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
