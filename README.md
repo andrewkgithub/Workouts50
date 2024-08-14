@@ -52,7 +52,3 @@ The roadmap for Workouts50 includes potential enhancements like integration with
 ## Acknowledgements
 My heartfelt thanks go to the instructors and staff of CS50x, whose guidance was instrumental in the development of this project. I also appreciate the open-source community for providing the tools that served as the building blocks of Workouts50.
 
-## Contact
-Should you have any questions or wish to connect, please feel free to reach out.
-
-Andrew Kim - [drewbcto@gmail.com](mailto:drewbcto@gmail.com)
