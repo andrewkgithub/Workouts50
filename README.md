@@ -1,54 +1,99 @@
-# Workouts50
+# Workout Tracker
 
-## Video Demo
-https://www.youtube.com/watch?v=O9r3gI_fdnw
+#### Description
+The Workout Tracker is a web-based application designed to help users log, view, and manage their workout routines. This project was developed as part of the CS50x final project and showcases skills in full-stack web development, including user authentication, data management, and responsive design. 
 
-## Introduction
-Workouts50 was conceived to simplify the fitness tracking experience. It serves as a digital companion for fitness enthusiasts to monitor and record their workout progress with ease and precision.
+Built with Python, Flask, SQLite, and Bootstrap, the application provides a seamless experience for users to stay on top of their fitness goals.
 
-## Detailed Description
-In today's fast-paced world, maintaining an active lifestyle is essential but keeping track of fitness can be cumbersome. Workouts50 removes this hassle with a straightforward approach, allowing users to focus on what matters most: their health.
+---
 
-## Features
+## Key Features
 
-### Workout Logging
-Users can log every workout with ease, noting the date, type, and duration, to keep a detailed record of their fitness journey.
+- **User Authentication**: Secure registration, login, and logout functionality.
+- **Workout Logging**: Users can log workouts with details such as date, type of exercise, and duration.
+- **Workout History**: View a history of logged workouts in reverse chronological order with the ability to delete entries.
+- **Password Management**: Users can change their passwords securely to maintain account safety.
+- **Responsive Design**: Fully responsive interface using Bootstrap for optimal usability on various devices.
 
-### Workout History
-A full history of workouts is available at a glance, offering insights into the user's activity patterns and progress.
+---
 
-### Account Management
-Personal details and login credentials can be updated securely, giving users full control over their account information.
+## Technologies Used
 
-## Technical Implementation
+- **Backend**: Flask (Python)
+- **Database**: SQLite
+- **Frontend**: HTML, CSS, Bootstrap
+- **Authentication**: Werkzeug (password hashing)
 
-### Frontend Development
-Built using HTML5, CSS, and JavaScript, Workouts50 provides a responsive and accessible interface that adapts to various devices.
+---
 
-### Backend Processing
-Python and Flask handle all backend operations, ensuring data is processed efficiently and the user experience remains smooth.
+## File Structure
 
-### Data Management
-SQLite offers a robust platform for storing and managing user data, enabling quick and secure access to workout logs.
+- **`app.py`**: Contains the core application logic, including routes and database interactions.
+- **`helpers.py`**: Helper functions for error handling and login-required decorators.
+- **`templates/`**: Contains HTML templates for the application:
+  - **`layout.html`**: The base layout used across all pages.
+  - **`index.html`**: Displays the dashboard with recent workouts.
+  - **`log_workout.html`**: Form for logging new workouts.
+  - **`view_workouts.html`**: Displays the workout history.
+  - **`change_password.html`**: Form for updating the user's password.
+  - **`register.html`** and **`login.html`**: Registration and login forms.
+- **`static/styles.css`**: Custom CSS for styling.
+- **`workout_tracker.db`**: SQLite database for storing user and workout data.
 
-## File Descriptions
-1. **app.py**: Main Flask application handling routing and database interactions.
-2. **layout.html**: Base HTML template.
-3. **index.html**: Homepage template.
-4. **log_workout.html**: Template for logging workouts.
-5. **view_workouts.html**: Template for displaying workout history.
-6. **register.html**: Registration form template.
-7. **login.html**: Login form template.
-8. **change_password.html**: Template for changing passwords.
-9. **helpers.py**: Contains helper functions.
-10. **workout_tracker.db**: SQLite database for user data.
+---
 
-## Design
-The design of Workouts50 is guided by minimalism and user-centric principles, resulting in an interface that is both aesthetically pleasing and functional.
+## Installation and Usage
 
-## Future Scope
-The roadmap for Workouts50 includes potential enhancements like integration with wearable devices, social functionality, and AI-driven personalized workout plans.
+### Prerequisites
+- Python 3.7+
+- Flask and required libraries:
+  ```bash
+  pip install flask flask-session cs50 werkzeug
+  ```
 
-## Acknowledgements
-My heartfelt thanks go to the instructors and staff of CS50x, whose guidance was instrumental in the development of this project. I also appreciate the open-source community for providing the tools that served as the building blocks of Workouts50.
+### Database Setup 
+Run the following SQL commands to set up the database schema:
+```
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    hash TEXT NOT NULL
+);
 
+CREATE TABLE workouts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    date TEXT NOT NULL,
+    type TEXT NOT NULL,
+    duration INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (id)
+);
+```
+
+### Running the Application
+1. Clone the repository:
+  ```
+  git clone https://github.com/your-username/workout-tracker.git
+  ```
+2. Navigate to the project directory:
+  ```
+  cd workout-tracker
+  ```
+3. Set the environment variable for Flask:
+- Linux/Mac:
+  ```
+  export FLASK_APP=app.py
+  ```
+- Windows (Command Prompt):
+  ```
+  set FLASK_APP=app.py
+  ```
+- Windows (PowerShell):
+  ```
+  $env:FLASK_APP = "app.py"
+  ```
+4. Run the Flask application:
+  ```
+  flask run
+  ```
+5. Open your browser and go to http://127.0.0.1:5000/.
